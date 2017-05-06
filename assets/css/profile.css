@@ -1,0 +1,78 @@
+.prof_container {
+  width:100%;
+  height:100%;
+}
+
+.header-text {
+  height:100%;
+  width:100%;
+  justify-content:center;
+  text-align:center;
+  margin:20px auto;
+  font-size:30px;
+  font-family:'Audiowide';
+}
+
+.col-md-12.header {
+  justify-content:center;
+}
+
+@media (max-width:991px) {
+  .header-text {
+    font-size:18px;
+  }
+}
+
+.col-lg-2.col-md-2.col-sm-4.col-xs-6.hvr-pulse-grow {
+}
+
+.professor_name {
+  font-size:12px;
+  font-weight:800;
+}
+
+.modal-body {
+  justify-content:center;
+}
+
+.modal-pic {
+  margin:0 auto;
+}
+
+@media (min-width:1200px) {
+  .modal_name {
+    width:100%;
+    height:100%;
+    font-family:'Prosto One';
+    font-weight:800;
+    font-size:16px;
+  }
+}
+
+.modal_name {
+  width:100%;
+  height:100%;
+  font-family:'Prosto One';
+  font-weight:800;
+  font-size:12px;
+}
+
+.modal-profile-container {
+  justify-content:center;
+  text-align:center;
+}
+
+.edit_modal_container {
+  justify-content:center;
+  text-align:center;
+}
+
+.label.label-primary.url_input_label {
+  font-size:12px;
+}
+
+.label-modal-container {
+  justify-content:center;
+  text-align:center;
+}
+
