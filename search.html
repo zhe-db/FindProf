@@ -15,30 +15,36 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prosto+One">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/PUSH---Bootstrap-Button-Pack1.css">
+    <link rel="stylesheet" href="assets/css/PUSH---Bootstrap-Button-Pack3.css">
+    <link rel="stylesheet" href="assets/css/PUSH---Bootstrap-Button-Pack2.css">
     <link rel="stylesheet" href="assets/css/font-awesome.css">
     <link rel="stylesheet" href="assets/css/hover.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Search1.css">
     <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="stylesheet" href="assets/css/PUSH---Bootstrap-Button-Pack.css">
+    <link rel="stylesheet" href="assets/css/search.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body ng-app="faceListApp" ng-controller="mainCtrl">
+<body ng-app="faceListApp" controller="searchCtrl">
     <div>
         <nav class="navbar navbar-default navigation-clean-search" style="background-color:#f0f0f0;">
             <div class="container">
-                <div class="navbar-header"><a class="navbar-brand navbar-link" href="#" style="color:rgb(41,41,41);font-family:'Press Start 2P', cursive;font-size:20px;"> Watnew</a>
-                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <div class="navbar-header"><a class="navbar-brand navbar-link brand hvr-icon-pop hvr-grow-rotate" href="#" style="color:rgb(41,41,41);font-family:'Press Start 2P', cursive;font-size:20px;"> FindProf</a>
+                    <button class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                 </div>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav">
-                        <li class="active" role="presentation"><a href="#">Prodessor List</a></li>
-                        <li role="presentation"><a href="#">Search a face</a></li>
-                        <li role="presentation"><a href="#">Identify face</a></li>
+                        <li role="presentation" class="hvr-pulse"><a href="findprof.html" style="font-family:'Prosto One', cursive;color:#8f8f8f;">Professor List</a></li>
+                        <li class="active hvr-pulse" role="presentation" style="font-family:'Prosto One', cursive;color:#363739;"><a href="#" class="hvr-grow" style="color:#222222;">Search a face</a></li>
+                        <li role="presentation" class="hvr-pulse"><a href="#" style="font-family:'Prosto One', cursive;color:#8f8f8f;">HomePage </a></li>
                     </ul>
                     <form class="navbar-form navbar-left" target="_self">
                         <div class="form-group">
-                            <label class="control-label" for="search-field"><i class="glyphicon glyphicon-search"></i></label>
+                            <label class="control-label hvr-pulse" for="search-field"><i class="glyphicon glyphicon-search"></i></label>
                             <input type="search" name="search" autocomplete="off" class="form-control search-field" id="search-field" ng-click="text_input='';" ng-model="text_input" />
                         </div>
                     </form><a class="btn btn-default navbar-btn navbar-right action-button" role="button" href="#">Login </a></div>
@@ -47,19 +53,28 @@
     </div>
     <div class="container">
         <div class="row" style="margin:50px;">
-            <div class="col-md-12 header">
-                <div data-bs-hover-animate="pulse">
-                    <header class="header-text">Professors in University of Waterloo</header>
-                </div>
+            <div class="col-md-12 header"><span id="search-label" class="hvr-pop" style="font-family:'Press Start 2P', cursive;font-size:20px;">Paste in url of the image </span>
+                <input class="input-lg" type="text" autofocus="" inputmode="url" id="input-search">
+                <button class="btn btn-danger raised" type="button" style="margin:15px;">CLEAR </button>
+                <button class="btn btn-success raised round" type="button" ng-click="result = true">SEARCH </button>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 hvr-pulse-grow" data-bs-hover-animate="pulse" ng-repeat="person in people | filter : text_input">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-8 col-xs-offset-2 hvr-grow" data-bs-hover-animate="pulse">
+                <div class="thumbnail"><img src="assets/img/50348-200.png" class="img-thumbnail">
+                    <div class="caption">
+                        <h3 class="professor_name" style="color:rgb(34,34,34);">?????</h3>
+                        <p style="font-family:'Baloo Bhai', cursive;font-size:12px;">Teaching classes:</p>
+                        <p style="font-family:'Baloo Bhai', cursive;font-size:12px;color:#db28a5;"> ?????????</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-8 col-xs-offset-2 hvr-grow" data-bs-hover-animate="pulse" ng-show="result">
                 <div class="thumbnail"><img src="assets/img/16604583049_b2a08f6e6d_o.jpg" class="img-thumbnail">
                     <div class="caption">
                         <h3 class="professor_name" style="color:rgb(34,34,34);">{{person.name}}</h3>
                         <p style="font-family:'Baloo Bhai', cursive;font-size:12px;">Teaching classes:</p>
-                        <p style="font-family:'Baloo Bhai', cursive;font-size:12px;color:#db28a5;" ng-bind="person.userData">Teaching classes:</p>
+                        <p style="font-family:'Baloo Bhai', cursive;font-size:12px;color:#db28a5;" ng-bind="person.course"> {{person.course}}</p>
                         <button class="btn btn-default btn-primary" type="button" style="font-size:15px;font-family:'Prosto One', cursive;" data-toggle="modal" data-target="#edit_box" ng-click="select_item(person)">Edit
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </button>
@@ -110,6 +125,7 @@
     <script src="assets/js/app.js"></script>
     <script src="assets/js/bs-animation.js"></script>
     <script src="assets/js/controller.js"></script>
+    <script src="assets/js/search_app.js"></script>
     <script src="assets/js/service.js"></script>
 </body>
 

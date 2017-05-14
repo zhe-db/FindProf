@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watnew</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Averia+Gruesa+Libre">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Bhai">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Passion+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Peralta">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prosto+One">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/PUSH---Bootstrap-Button-Pack1.css">
+    <link rel="stylesheet" href="assets/css/PUSH---Bootstrap-Button-Pack3.css">
+    <link rel="stylesheet" href="assets/css/PUSH---Bootstrap-Button-Pack2.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/hover.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search1.css">
+    <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="stylesheet" href="assets/css/PUSH---Bootstrap-Button-Pack.css">
+    <link rel="stylesheet" href="assets/css/search.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body ng-app="faceListApp" ng-controller="mainCtrl">
+    <div>
+        <nav class="navbar navbar-default navigation-clean-search" style="background-color:#f0f0f0;">
+            <div class="container">
+                <div class="navbar-header"><a class="navbar-brand navbar-link brand hvr-icon-pop hvr-grow-rotate" href="#" style="color:rgb(41,41,41);font-family:'Press Start 2P', cursive;font-size:20px;"> FindProf</a>
+                    <button class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active hvr-pulse" role="presentation" style="font-family:'Prosto One', cursive;color:#363739;"><a href="#" class="hvr-grow" style="color:#222222;">Prodessor List</a></li>
+                        <li role="presentation" class="hvr-pulse"><a href="search.html" style="font-family:'Prosto One', cursive;color:#8f8f8f;">Search a face</a></li>
+                        <li role="presentation" class="hvr-pulse"><a href="#" style="font-family:'Prosto One', cursive;color:#8f8f8f;">Identify face</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-left" target="_self">
+                        <div class="form-group">
+                            <label class="control-label hvr-pulse" for="search-field"><i class="glyphicon glyphicon-search"></i></label>
+                            <input type="search" name="search" autocomplete="off" class="form-control search-field" id="search-field" ng-click="text_input='';" ng-model="text_input" />
+                        </div>
+                    </form><a class="btn btn-default navbar-btn navbar-right action-button" role="button" href="#">Login </a></div>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row" style="margin:50px;">
+            <div class="col-md-12 header">
+                <div data-bs-hover-animate="pulse">
+                    <header class="header-text hvr-grow">Professors in University of Waterloo</header>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 hvr-grow" data-bs-hover-animate="pulse" ng-repeat="person in people | filter : text_input">
+                <div class="thumbnail"><img src="assets/img/16604583049_b2a08f6e6d_o.jpg" class="img-thumbnail">
+                    <div class="caption">
+                        <h3 class="professor_name" style="color:rgb(34,34,34);">{{person.name}}</h3>
+                        <p style="font-family:'Baloo Bhai', cursive;font-size:12px;">Teaching classes:</p>
+                        <p style="font-family:'Baloo Bhai', cursive;font-size:12px;color:#db28a5;" ng-bind="person.course"> {{person.course}}</p>
+                        <button class="btn btn-default btn-primary" type="button" style="font-size:15px;font-family:'Prosto One', cursive;" data-toggle="modal" data-target="#edit_box" ng-click="select_item(person)">Edit
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 hvr-pulse-grow" data-bs-hover-animate="pulse" ng-repeat="person in males | filter : text_input">
+                <div class="thumbnail"><img src="assets/img/16604583049_b2a08f6e6d_o.jpg" class="img-thumbnail">
+                    <div class="caption">
+                        <h3 class="professor_name" style="color:rgb(34,34,34);">{{person.name}}</h3>
+                        <p style="font-family:'Baloo Bhai', cursive;font-size:12px;">Teaching classes:</p>
+                        <p style="font-family:'Baloo Bhai', cursive;font-size:12px;color:#db28a5;" ng-bind="person.userData">Teaching classes:</p>
+                        <button class="btn btn-default btn-primary" type="button" style="font-size:15px;font-family:'Prosto One', cursive;" data-toggle="modal" data-target="#edit_box" ng-click="select_item(person)">Edit
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="edit_box">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Edit Profile</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 modal-profile-container">
+                            <p class="modal_name" ng-bind="current.name"></p>
+
+<img class="img-thumbnail modal-pic" ng-src="{{current.url}}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 label-modal-container" style="margin:0px;padding:15px 15px;">
+                            <span class="label label-success" style="margin:5px;font-size:12px;" ng-repeat="course in current.splitData" ng-bind="course">{{course}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 edit_modal_container" style="padding:15px;">
+                            <span class="label label-primary url_input_label" ng-show="toedit">Picuture Url:</span>
+                            <input type="text" style="margin:15px;" ng-show="toedit">
+                            <button ng-hide="toedit" class="btn btn-default btn-danger" type="button" ng-click="toedit = !toedit">Edit</button>
+                            <button ng-click="toedit = !toedit" ng-show="toedit" class="btn btn-warning" type="button">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="button">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
+    <script src="assets/js/controller.js"></script>
+    <script src="assets/js/search_app.js"></script>
+    <script src="assets/js/service.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 angular.module("faceListApp")
 .controller('mainCtrl', function($scope,getFaceListService){
-    $scope.text_input = "Search a name";
+    $scope.text_input = "";
         console.log($scope.text_input);
     $scope.select_item = function(person){
         $scope.current = person;
@@ -13,7 +13,11 @@ angular.module("faceListApp")
     }
     getFaceListService.getFace(function (response){
         $scope.people = response.data;
-        console.log($scope.people[0].userData.replace(/" "/g,"-").split("-"));
+        for(var i = 0; i < response.data.length; i++){
+            $scope.people[i].course = $scope.people[i].userData.replace(/"&"/g,"-").split("-")[0].replace(/"/g,"");
+            //console.log($scope.people[i].userData.replace(/" "/g,"-").split("-"));
+        }
+       // console.log($scope.people[0].userData.replace(/" "/g,"-").split("-"));
     })    
 })
 .service("getFaceListService",function($http){
@@ -36,5 +40,4 @@ angular.module("faceListApp")
         };
         $http(person_info_req).then(callback)
     }
-    
 })

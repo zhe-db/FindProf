@@ -1,0 +1,16 @@
+#input-search {
+  border-radius:10px;
+  width:45vw;
+  margin-top:50PX;
+  margin-right:20px;
+}
+
+.col-md-12.header {
+  text-align:center;
+  display:block;
+}
+
+#search-label {
+  margin-bottom:30px;
+}
+
